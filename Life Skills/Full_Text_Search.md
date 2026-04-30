@@ -16,7 +16,6 @@ Java
 Directory index = new RAMDirectory();
 IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());
 IndexWriter writer = new IndexWriter(index, config);
-
 Document doc = new Document();
 doc.add(new TextField("title", "Full text search with Lucene", Field.Store.YES));
 writer.addDocument(doc);
