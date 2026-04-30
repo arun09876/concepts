@@ -112,7 +112,6 @@ My recommendation is to go with Elasticsearch. It would solve the performance is
 * [Apache Lucene Official Website](https://lucene.apache.org/)
 * [Apache Solr Official Website](https://solr.apache.org/)
 * [Elasticsearch Official Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
-* [What is Full Text Search - Elastic Blog](https://www.elastic.co/what-is/full-text-search)
 * [Solr vs Elasticsearch Comparison - Sematext](https://sematext.com/blog/solr-vs-elasticsearch-differences/)
 * [Getting Started with Lucene - Baeldung](https://www.baeldung.com/lucene)
 * [ELK Stack Overview - Elastic](https://www.elastic.co/what-is/elk-stack)
