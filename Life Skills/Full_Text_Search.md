@@ -12,7 +12,7 @@ Lucene is a Java library for search. It is not a server or an application you ca
 
 I found Lucene a bit hard to get into at first because there is no UI or API. You just work with it through code. Here is a simple example of how indexing works in Lucene:
 
-# Java
+Java
 Directory index = new RAMDirectory();
 IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());
 IndexWriter writer = new IndexWriter(index, config);
