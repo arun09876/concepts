@@ -6,20 +6,24 @@ I was recently working on a project that was having some performance issues with
 
 Before going into the tools, it is worth understanding what full text search actually means. In a normal database like MySQL, if you search for a word, it scans through every row to find a match. This gets very slow when the data grows. Full text search engines solve this problem by building something called an inverted index, which basically maps every word to the documents that contain it. This makes searching much faster.
 
+---
+
 ## Lucene
 
 Lucene is a Java library for search. It is not a server or an application you can just install and run. You have to add it to your Java code and use it from there. Both Solr and Elasticsearch are built on top of Lucene, so it is kind of the base layer for all three tools.
 
 I found Lucene a bit hard to get into at first because there is no UI or API. You just work with it through code. Here is a simple example of how indexing works in Lucene:
 
-```Java
+```java
 Directory index = new RAMDirectory();
 IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());
 IndexWriter writer = new IndexWriter(index, config);
+
 Document doc = new Document();
 doc.add(new TextField("title", "Full text search with Lucene", Field.Store.YES));
 writer.addDocument(doc);
-writer.close();```
+writer.close();
+```
 
 Lucene is powerful but requires a lot of setup. I would not recommend it unless your team is comfortable with Java and wants very low-level control over how search works.
 
@@ -29,6 +33,8 @@ Lucene is powerful but requires a lot of setup. I would not recommend it unless 
 * You need Java knowledge to use it.
 * No built-in HTTP API or clustering support.
 * Very fast and flexible if used correctly.
+
+---
 
 ## Solr
 
@@ -46,6 +52,7 @@ Solr also has a mode called SolrCloud which allows you to run it across multiple
 * SolrCloud supports distributed setups.
 * Schema management is more manual compared to Elasticsearch.
 
+---
 
 ## Elasticsearch
 
@@ -55,14 +62,17 @@ What I liked most about Elasticsearch is that you do not need to define a schema
 
 Here is a simple example of indexing a document using the Elasticsearch REST API:
 
+```
 POST /products/_doc/1
 {
   "name": "Running Shoes",
   "description": "Lightweight shoes for long distance running"
 }
+```
 
 And searching for it:
 
+```
 GET /products/_search
 {
   "query": {
@@ -71,6 +81,7 @@ GET /products/_search
     }
   }
 }
+```
 
 This is much simpler to work with compared to writing Java code for Lucene.
 
@@ -82,6 +93,7 @@ This is much simpler to work with compared to writing Java code for Lucene.
 * Great for real-time search and log analytics.
 * Large community and good documentation.
 
+---
 
 ## Which One Should We Use?
 
@@ -93,6 +105,7 @@ After going through all three, here is my understanding:
 
 My recommendation is to go with Elasticsearch. It would solve the performance issue we are facing and also leaves room for future growth without needing major changes.
 
+---
 
 ## References
 
